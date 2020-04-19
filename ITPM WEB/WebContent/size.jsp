@@ -12,6 +12,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/functioncss.css" type="text/css">
          <link rel="stylesheet" href="css/footer.css" type="text/css">
            <link rel="stylesheet" href="css/header.css" type="text/css">
+           <link rel="stylesheet" href="css/fileUpload.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
 * {
@@ -30,7 +31,7 @@ and open the template in the editor.
                 </div>
                 <br>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href=index.jsp>Home</a></li>
                     <li><a href="#news">Size</a></li>
                     <li><a href="#contact">Variables</a></li>
                     <li><a href="#contact">Methods</a></li>
@@ -42,24 +43,63 @@ and open the template in the editor.
               
                  
  
-                                   
+<script src="js/uploadfile.js"></script>      
+
+                 
     </head>
 <body>
         <div class="row">
   <div class="column" style="background-color:#F0FFFF;">
     <h2>Enter The Code Here</h2>
-    <input type="text" id="fname" name="fname" class ="boxx"><br><br>
-    <button class="button2"> Generate </button>
-    <button class="button2"> browse </button>
+    
+    
+
+    <div class="main-container">
+		<center>
+			<div class="inner-container">
+				<div class="container">
+					<label>Size Complexsity<br>
+					</label><br /> <br /> <label>Available Languages</label><br /> <br /> <label
+						style="font-size: 12px;">&#x1F5F9 JAVA</label><br /> <label
+						style="font-size: 12px;">&#x1F5F9 C++</label><br />
+				</div>
+				<br />
+				<div class="upload">
+					<form action="UploadServletSize" method="post" name="form1" id="form1">
+						<label>Browse <input name="file" type="file" id="file" multiple
+							style="display: none;" onChange="uploadOnChange(this)">
+						</label>
+						<div class="browse-button" style="margin-bottom: 50px;">
+							<input type="text" id="filename" />
+							<input type="hidden" id="use" name="path"/>
+							<input type="submit" name="submit"
+								value="Proceed" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</center>
+	</div>
+	
+
+	
             
   </div>
   <div class="column" style="background-color:#F0FFFF;">
     <h2>Calculation</h2>
     <div class= "coloum2" style="background-color:gray;">
-           <input type="text" id="fresult" name="fname" class ="box1"><br><br>
+    <h3 style="color:white;">Answer is here</h3>
+    <form action="" method="post" name="form2" id="form2">
+    <%Integer name = (Integer)request.getAttribute("TotalSum"); %>
+    <% if (name == null) { %>
+    <div> <input type="text" id="fresult" name="fname" class ="box1"><br><br></div>
+	<% } else { %>
+	<div><input type="text" id="fresult" name="fname" class ="box1" value="<%= name%>"><br><br></div>
+	<% } %>
+    </form> 
+           <!--  <input type="text" id="fresult" name="fname" class ="box1"><br><br>-->
     </div>
  
-    <button class="button1"> Refresh </button>
   </div>
 </div>
 </body>

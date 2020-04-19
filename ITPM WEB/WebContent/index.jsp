@@ -1,8 +1,4 @@
-<%-- 
-    Document   : index
-    Created on : Feb 24, 2020, 10:09:11 AM
-    Author     : nadeera
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,7 +47,7 @@
 	<div id="menu-wrapper">
 		<ul id="menu">
 			<li class="current_page_item"><a href="#"><span>Home</span></a></li>
-			<li><a href="specialfishes.html"><span>Size</span></a>	
+			<li><a href="size.jsp"><span>Size</span></a>	
 			</li>
                         <li><a href="specialfishes.html"><span>Variable</span></a>	
 			</li>
@@ -69,10 +65,9 @@
 		<div id="content" Style="">
                     
                     <div class="panel panel-primary">
-                        <div class="panel-heading">Result Of Mesurement</div>
+                        <div class="panel-heading">Result Of Measurement</div>
                         <div class="panel-body">
-                            <label style="center" for="male"><u>Measuring total complexity of a program statement: </u></label><br>
-                                <input type="text" class="res" name="result" value="" size="20px" readonly="readonly" /><br>
+                                <!-- <input type="text" class="res" name="result" value="" size="20px" readonly="readonly" /><br> -->
                                     <button class="btn btn-lg btn-default btn-res" onclick="toFileUpload();">FileUpload</button><br>
                          
                         </div>

@@ -4,10 +4,9 @@
 <head>
 <title>File Upload</title>
 <link rel="stylesheet" href="css/fileUpload.css">
-<script src="js/uploadfile.js"></script>
+<script src="js/uploadfilecup.js"></script>
 </head>
 <body>
-	
 	<div class="main-container">
 		<center>
 			<div class="inner-container">
