@@ -21,7 +21,7 @@ and open the template in the editor.
 </style>
     
 		<div class="icon-bar">
-					<a class="active" href="index.jsp"><img src="images/homeic.png" width="30px" height="30px"></a> 
+					<a class="active" href="home.html"><img src="images/homeic.png" width="30px" height="30px"></a> 
 						<a href onClick=" history.go(-1);return true;"><img src="images/left.png" width="30px" height="30px"></a> 
 						<img src="images/right.png" width="30px" height="30px">
                                                 <img src="images/qmark.jpg" width="30px" height="30px">
@@ -36,21 +36,25 @@ and open the template in the editor.
                     <li><a href="#">Variables</a></li>
                     <li><a href="#">Methods</a></li>
                     <li><a href="#">Inheritance</a></li>
-                    <li><a href="#cupling.jsp">Coupling</a></li>
+                    <li><a href="#cupling">Coupling</a></li>
                      <li><a href="#">Control Structure</a></li>
                 </ul>
                 <hr>
               
                  
  
-<script src="js/uploadfile.js"></script>      
-
+<script src="js/uploadfilecup.js"></script>      
+ <script>
+            function toFileUpload(){
+                window.location.replace("fileupload.jsp");
+            }
+        </script>
                  
     </head>
 <body>
         <div class="row">
   <div class="column" style="background-color:#F0FFFF;">
-    <h2>Enter The Code Here</h2>
+    <h2>Browse Code Here</h2>
     
     
 
@@ -58,24 +62,24 @@ and open the template in the editor.
 		<center>
 			<div class="inner-container">
 				<div class="container">
-					<label>Size Complexsity<br>
-					</label><br /> <br /> <label>Available Languages</label><br /> <br /> <label
-						style="font-size: 12px;">&#x1F5F9 JAVA</label><br /> <label
-						style="font-size: 12px;">&#x1F5F9 C++</label><br />
+					<label>Cupling Code Browse Here<br><label
+						style="font-size: 12px;">JAVA & C++</label><br/>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
 				</div>
 				<br />
 				<div class="upload">
-					<form action="UploadServletSize" method="post" name="form1" id="form1">
-						<label>Browse <input name="file" type="file" id="file" multiple
-							style="display: none;" onChange="uploadOnChange(this)">
-						</label>
+					<form action="" method="" name="" id="">
+	
 						<div class="browse-button" style="margin-bottom: 50px;">
-							<input type="text" id="filename" />
-							<input type="hidden" id="use" name="path"/>
-							<input type="submit" name="submit"
-								value="Proceed" />
 						</div>
 					</form>
+					 <button class="btn btn-lg btn-default btn-res" onclick="toFileUpload();">FileUpload</button><br>
 				</div>
 			</div>
 		</center>
@@ -120,7 +124,7 @@ and open the template in the editor.
     </div>
     <div>	
         <table align="right">
-		<tr>
+			<tr>
 			<th><span class="fa fa-star checked" ></span></th>
 			<th><span class="fa fa-star checked"></span></th>
 			<th><span class="fa fa-star checked"></span></th>

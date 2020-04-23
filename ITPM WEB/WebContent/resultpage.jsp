@@ -10,8 +10,13 @@
 <title>Result Page</title>
 <link rel="stylesheet" href="css/fileUpload.css">
 <script src="js/uploadfile.js"></script>
+        <script>
+            function gohome(){
+                window.location.replace("index.jsp");
+            }
+        </script>
 </head>
-<body>
+<body style="background-color: #6495ED;">
 
 	<%
 		ArrayList<CustomFile> main = (ArrayList) request.getAttribute("mainObject");
@@ -27,6 +32,7 @@
 				<%
 					out.print(file.getFileName());
 				%>
+				 <button class="btn btn-lg btn-default btn-res" onclick="gohome();"> Go Home</button><br>
 			</h3>
 		</center>
 		<br /> <br />

@@ -27,17 +27,17 @@
             }
         </script>
 </head>
-<body>
+<body style="background-color:#F0F8FF;">
     <div id="wrapper"><br>
      <div class="icon-bar">
-					<a class="active" href="home.html"><img src="images/homeic.png" width="30px" height="30px"></a> 
+					<a class="active" href="index.jsp"><img src="images/homeic.png" width="30px" height="30px"></a> 
 						<a href onClick=" history.go(-1);return true;"><img src="images/left.png" width="30px" height="30px"></a> 
 						<img src="images/right.png" width="30px" height="30px">
                                                 <img src="images/qmark.jpg" width="30px" height="30px">
                                      </div><br>
 	<div id="header-wrapper" >
 		<div id="header">
-			<div id="logo">
+			<div id="logo" style="background-color:#F0F8FF;">
 				<h1>MEASURING CODE</h1>
 				<p>web-based code complexity measuring tool <a href="http://templated.co" rel="nofollow"></a></p>
 			</div>
@@ -47,16 +47,13 @@
 	<div id="menu-wrapper">
 		<ul id="menu">
 			<li class="current_page_item"><a href="#"><span>Home</span></a></li>
-			<li><a href="size.jsp"><span>Size</span></a>	
-			</li>
-                        <li><a href="specialfishes.html"><span>Variable</span></a>	
-			</li>
-			
-                        <li><a href="#"><span>Methods</span></a></li>
-			<li><a href="#"><span>Inheritance</span></a>
-			</li>
-			<li><a href="aboutus.html"><span>Coupling</span></a></li>
-			<li><a href="contact.html"><span>Control Structures</span></a></li>
+			<li><a href="size.jsp"><span>Size</span></a></li>
+            <li><a href="specialfishes.html"><span>Variable</span></a></li>
+			<li><a href="#"><span>Methods</span></a></li>
+			<li><a href="#"><span>Inheritance</span></a></li>
+			<li><a href="cupling.jsp"><span>Coupling</span></a></li>
+			<li><a href="cupling.jsp"><span>Control Structures</span></a></li>
+			<li><a href="about.jsp"><span>About</span></a></li>
 		</ul>
 		
 	</div>
@@ -66,10 +63,19 @@
                     
                     <div class="panel panel-primary">
                         <div class="panel-heading">Result Of Measurement</div>
+                     
                         <div class="panel-body">
                                 <!-- <input type="text" class="res" name="result" value="" size="20px" readonly="readonly" /><br> -->
                                     <button class="btn btn-lg btn-default btn-res" onclick="toFileUpload();">FileUpload</button><br>
-                         
+                         	<br>
+		<br>
+		<br>	
+		<br>
+		<br>
+		<br>
+			<br>
+		<br>
+		<br>
                         </div>
                                  </div>
 			</div>
@@ -78,6 +84,10 @@
 		
 		<!-- end #sidebar -->
 		<div style="clear: both;">&nbsp;</div>
+		<br>
+		<br>
+		<br>
+		
 	</div>
 	
 	<!-- end #page -->

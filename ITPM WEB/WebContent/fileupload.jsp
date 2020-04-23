@@ -9,18 +9,15 @@
 <body>
 	<div class="main-container">
 		<center>
-			<div class="inner-container">
-				<div class="container">
-					<label>Do you want to know how much your program is
-						complex.<br />Drop your program and I will calculate it for you.
-					</label><br /> <br /> <label>Available Languages</label><br /> <br /> <label
-						style="font-size: 12px;">&#x1F5F9 JAVA</label><br /> <label
-						style="font-size: 12px;">&#x1F5F9 C++</label><br />
+			<div class="inner-container" style="background-color: #6495ED;">
+				<div class="container" style="background-color: #008B8B;">
+					<label
+						style="font-size: 12px;">JAVA & C++</label><br />
 				</div>
 				<br />
 				<div class="upload">
 					<form action="UploadServlet" method="post" enctype="multipart/form-data" name="form1" id="form1">
-						<label>Browse <input name="file" type="file" id="file" multiple
+						<label style="color:blue;">Browse <input name="file" type="file" id="file" multiple
 							style="display: none;" onChange="uploadOnChange(this)">
 						</label>
 						<div class="browse-button" style="margin-bottom: 50px;">
