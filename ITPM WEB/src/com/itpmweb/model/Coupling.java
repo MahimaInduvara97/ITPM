@@ -2,7 +2,6 @@ package com.itpmweb.model;
 
 import java.util.ArrayList;
 
-
 public class Coupling {
 
 	private String fileName;
@@ -50,6 +49,7 @@ public class Coupling {
 	private int totmrgvd;
 	private int totrmrgvs;
 	private int totrmrgvd;
+	private int[] sum;
 	private int finalValue;
 	
 	private ArrayList<Line> MethodList;
@@ -61,6 +61,7 @@ public class Coupling {
 	private ArrayList<Line> globalVariableListInRec;
 	private ArrayList<Line> regularMethods;
 	private ArrayList<Line> recursiveMethods;
+	private ArrayList<Line> recursiveMethodCalls;
 	private ArrayList<Line> regularInRegularMethods;
 	private ArrayList<Line> recursiveInRegularMethods;
 	private ArrayList<Line> recursiveInRecursiveMethods;
@@ -85,6 +86,7 @@ public class Coupling {
 		this.recursiveMethods = null;
 		this.regularInRegularMethods = null;
 		this.methodSetFull = null;
+		this.sum = new int[13];
 	}
 
 	public Line getLine() {
@@ -467,6 +469,10 @@ public class Coupling {
 		this.recursiveMethods = new ArrayList<Line>(recursiveMethods);
 	}
 
+	public void setRecursiveMethodCalls(ArrayList<Line> recursiveMethodCalls) {
+		this.recursiveMethodCalls = recursiveMethodCalls;
+	}
+
 	public void setRegularInRegularMethods(ArrayList<Line> regularToRegularMethods) {
 		this.regularInRegularMethods = new ArrayList<Line>(regularToRegularMethods);
 	}
@@ -489,6 +495,10 @@ public class Coupling {
 
 	public ArrayList<Line> getRecursiveMethods() {
 		return recursiveMethods;
+	}
+
+	public ArrayList<Line> getRecursiveMethodCalls() {
+		return recursiveMethodCalls;
 	}
 
 	public ArrayList<Line> getRegularInRegularMethods() {
@@ -647,5 +657,13 @@ public class Coupling {
 
 	public int getFinalValue() {
 		return finalValue;
+	}
+	
+	public void setSum(int[] sum) {
+		this.sum = sum;
+	}
+	
+	public int[] getSum() {
+		return this.sum;
 	}
 }

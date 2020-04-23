@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.apache.commons.fileupload.FileItem;
 
-import com.itpmweb.model.Coupling;
 import com.itpmweb.model.CustomFile;
 import com.itpmweb.model.FileRead;
 import com.itpmweb.model.Line;
@@ -13,11 +12,12 @@ import com.itpmweb.util.RemoveDuplicates;
 public class Main {
 
 	private boolean status;
-	private static ArrayList<CustomFile> fileList = new ArrayList<CustomFile>();
+	private ArrayList<CustomFile> fileList = new ArrayList<CustomFile>();
 	private String fileType = "";
 	public static String WEBCONTENTDIR = "C:\\Users\\Administrator\\Desktop\\git\\repository\\ITPM WEB\\WebContent\\";
+	//public static String WEBCONTENTDIR = "/opt/tomcat/webapps/ROOT/";
 
-	public static ArrayList<CustomFile> getFileList() {
+	public ArrayList<CustomFile> getFileList() {
 		return fileList;
 	}
 
@@ -32,7 +32,6 @@ public class Main {
 	public void setFileType(String fileType) {
 		this.fileType = fileType;
 	}
-	
 
 	public boolean run() {
 
@@ -65,17 +64,16 @@ public class Main {
 				}
 			}
 		}
-
 		if (this.fileList.size() > 1) {
 			try {
 				couplingService.process2(this.fileList);
-				couplingService.process3(this.fileList);
 				status = true;
 			} catch (Exception e) {
 				status = false;
 				e.printStackTrace();
 			}
 		}
+		couplingService.process3(this.fileList);
 		return status;
 	}
 
