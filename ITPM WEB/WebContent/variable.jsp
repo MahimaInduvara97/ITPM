@@ -1,7 +1,15 @@
 <!DOCTYPE html>
-
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<%@page import="java.util.ArrayList"%>
 <html lang="en">
     <head class="header">
+    
+    	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
         <title> ITPM </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +25,7 @@
 </style>
     
 		<div class="icon-bar">
-					<a class="active" href="index.jsp"><img src="images/homeic.png" width="30px" height="30px"></a> 
+					<a class="active" href="home.html"><img src="images/homeic.png" width="30px" height="30px"></a> 
 						<a href onClick=" history.go(-1);return true;"><img src="images/left.png" width="30px" height="30px"></a> 
 						<img src="images/right.png" width="30px" height="30px">
                                                 <img src="images/qmark.jpg" width="30px" height="30px">
@@ -29,27 +37,23 @@
                 <ul>
                     <li><a href=index.jsp>Home</a></li>
                     <li><a href="size.jsp">Size</a></li>
-                    <li><a href="variable.jsp">Variables</a></li>
                     <li><a href="Methods.jsp">Methods</a></li>
                     <li><a href="Upload.jsp">Inheritance</a></li>
-                    <li><a href="controlStruture.jsp">Control Structure</a></li>
+                    <li><a href="cupling.jsp">Coupling</a></li>
+                     <li><a href="controlStruture.jsp">Control Structure</a></li>
                 </ul>
                 <hr>
               
                  
  
-<script src="js/uploadfilecup.js"></script>      
- <script>
-            function toFileUpload(){
-                window.location.replace("fileupload.jsp");
-            }
-        </script>
+<script src="js/uploadfile.js"></script>      
+
                  
     </head>
 <body>
         <div class="row">
   <div class="column" style="background-color:#F0FFFF;">
-    <h2>Browse Code Here</h2>
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter The Code Here</h2>
     
     
 
@@ -57,24 +61,24 @@
 		<center>
 			<div class="inner-container">
 				<div class="container">
-					<label>Cupling Code Browse Here<br><label
-						style="font-size: 12px;">JAVA & C++</label><br/>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
+					<label>Variable Complexsity<br>
+					</label><br /> <br /> <label>Available Languages</label><br /> <br /> <label
+						style="font-size: 12px;">&#x1F5F9 JAVA</label><br /> <label
+						style="font-size: 12px;">&#x1F5F9 C++</label><br />
 				</div>
 				<br />
 				<div class="upload">
-					<form action="" method="" name="" id="">
-	
+					<form action="UploadServletVariables" method="post" name="form1" id="form1">
+						<label>Browse <input name="file" type="file" id="file" multiple
+							style="display: none;" onChange="uploadOnChange(this)">
+						</label>
 						<div class="browse-button" style="margin-bottom: 50px;">
+							<input type="text" id="filename" />
+							<input type="hidden" id="use" name="path"/>
+							<input type="submit" name="submit"
+								value="Proceed" />
 						</div>
 					</form>
-					 <button class="btn btn-lg btn-default btn-res" onclick="toFileUpload();">FileUpload</button><br>
 				</div>
 			</div>
 		</center>
@@ -84,19 +88,68 @@
 	
             
   </div>
-  <div class="column" style="background-color:#F0FFFF;">
-    <h2>Calculation</h2>
-    <div class= "coloum2" style="background-color:gray;">
-    <h3 style="color:white;">Answer is here</h3>
-    <form action="" method="post" name="form2" id="form2">
-    <%Integer name = (Integer)request.getAttribute("TotalSum"); %>
-    <% if (name == null) { %>
-    <div> <input type="text" id="fresult" name="fname" class ="box1"><br><br></div>
-	<% } else { %>
-	<div><input type="text" id="fresult" name="fname" class ="box1" value="<%= name%>"><br><br></div>
-	<% } %>
-    </form> 
-           <!--  <input type="text" id="fresult" name="fname" class ="box1"><br><br>-->
+  <div class="column bg-light">
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weights related to the variable factor</h2>
+    <div class= "coloum2">
+    
+    
+  <%
+	  ArrayList weights = (ArrayList)session.getAttribute("weights");
+  
+  		
+	
+    int Wgv = 2;
+	int Wlv = 1;
+	int Wpdtv = 1;
+	int Wcdtv = 2;
+  		
+  	if(weights != null){
+  		Wgv = Integer.parseInt(weights.get(0).toString());
+  		Wlv = Integer.parseInt(weights.get(1).toString());
+  		Wpdtv = Integer.parseInt(weights.get(2).toString());
+  		Wcdtv= Integer.parseInt(weights.get(3).toString());
+  		
+  	}
+	
+
+%> 
+     
+     <form class="form-inline bg-white" action="UploadServletVariables" method="get">
+ 
+	 				<table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Program Component</th>
+					        <th>Weight</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td>Global Variable</td>
+					        <td><input type="number" value="<%= Wgv %>"   class="form-control"  id="weighglob" name="weighglob"></td>
+					      </tr>
+					      <tr>
+					        <td>Local Variable</td>
+					        <td><input type="number" value="<%= Wlv %>"   class="form-control"  id="weightloc" name="weightloc"></td>
+					      </tr>
+					      <tr>
+					        <td>Primitive data type Variable</td>
+					        <td><input type="number" value="<%= Wpdtv%>" class="form-control" id="weightpv" name="weightpv"></td>
+					      </tr>
+					      
+					      <tr>
+					      	<td>Composite data type parameter</td>
+					      	<td><input type="number"   value="<%=Wcdtv %>" class="form-control"  id="weightcv" name="weightcv"></td>
+					      </tr>
+					      
+					      
+					    </tbody>
+					</table>
+ 
+					<button type="submit" class="btn btn-primary float-right"> Save</button>		
+   
+				</form>
+     
     </div>
  
   </div>
@@ -119,7 +172,7 @@
     </div>
     <div>	
         <table align="right">
-			<tr>
+		<tr>
 			<th><span class="fa fa-star checked" ></span></th>
 			<th><span class="fa fa-star checked"></span></th>
 			<th><span class="fa fa-star checked"></span></th>

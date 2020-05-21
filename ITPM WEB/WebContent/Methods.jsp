@@ -7,6 +7,9 @@ and open the template in the editor.
 <%@page import="java.util.ArrayList"%>
 <html lang="en">
     <head class="header">
+    
+    	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
         <title> ITPM </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +18,6 @@ and open the template in the editor.
            <link rel="stylesheet" href="css/header.css" type="text/css">
            <link rel="stylesheet" href="css/fileUpload.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <style>
 * {
   box-sizing: border-box;
@@ -23,7 +25,7 @@ and open the template in the editor.
 </style>
     
 		<div class="icon-bar">
-					<a class="active" href="index.jsp"><img src="images/homeic.png" width="30px" height="30px"></a> 
+					<a class="active" href="home.html"><img src="images/homeic.png" width="30px" height="30px"></a> 
 						<a href onClick=" history.go(-1);return true;"><img src="images/left.png" width="30px" height="30px"></a> 
 						<img src="images/right.png" width="30px" height="30px">
                                                 <img src="images/qmark.jpg" width="30px" height="30px">
@@ -34,10 +36,10 @@ and open the template in the editor.
                 <br>
                 <ul>
                     <li><a href=index.jsp>Home</a></li>
-                    <li><a href="variable">Variables</a></li>
-                    <li><a href="Methods.jsp">Methods</a></li>
-                    <li><a href="inheritance.jsp">Inheritance</a></li>
-                    <li><a href="#cupling.jsp">Coupling</a></li>
+                    <li><a href="size.jsp">Size</a></li>
+                    <li><a href="variable.jsp">Variables</a></li>
+                    <li><a href="Upload.jsp">Inheritance</a></li>
+                    <li><a href="cupling.jsp">Coupling</a></li>
                      <li><a href="controlStruture.jsp">Control Structure</a></li>
                 </ul>
                 <hr>
@@ -51,22 +53,23 @@ and open the template in the editor.
 <body>
         <div class="row">
   <div class="column" style="background-color:#F0FFFF;">
-    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browse The Code Here</h2>
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter The Code Here</h2>
     
     
 
     <div class="main-container">
 		<center>
 			<div class="inner-container">
-				<div class="container"  style="background-color: #6495ED;">
-					<label>Size Complexsity<br>
-					 <label
-						style="font-size: 12px;">JAVA & C++</label><br />
+				<div class="container">
+					<label>Method Complexsity<br>
+					</label><br /> <br /> <label>Available Languages</label><br /> <br /> <label
+						style="font-size: 12px;">&#x1F5F9 JAVA</label><br /> <label
+						style="font-size: 12px;">&#x1F5F9 C++</label><br />
 				</div>
 				<br />
 				<div class="upload">
-					<form action="UploadServletSize" method="post" name="form1" id="form1">
-						<label style="background-color: #008B8B;">Browse <input name="file" type="file" id="file" multiple
+					<form action="UploadServletMethod" method="post" name="form1" id="form1">
+						<label>Browse <input name="file" type="file" id="file" multiple
 							style="display: none;" onChange="uploadOnChange(this)">
 						</label>
 						<div class="browse-button" style="margin-bottom: 50px;">
@@ -76,24 +79,17 @@ and open the template in the editor.
 								value="Proceed" />
 						</div>
 					</form>
-					<br>
-		<br>
-		
-		<br>
-		<br>
-		<br>
 				</div>
 			</div>
 		</center>
-		
 	</div>
 	
 
 	
             
   </div>
-<div class="column bg-light">
-    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weights related to the size factor</h2>
+  <div class="column bg-light">
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weights related to the method factor</h2>
     <div class= "coloum2">
     
     
@@ -102,18 +98,18 @@ and open the template in the editor.
   
   		
 	
-    int Wkw =1;
-	int Wid=1;
-	int Wop = 1;
-	int Wnv = 1;
-	int Wsl = 1; 
+  		int Wpdtp =4;
+		int Wcdtp=8;
+		int Wvrt = 6;
+		int Wprt = 1;
+		int Wcrt = 2; 
   		
-	if(weights != null){
-  		Wkw = Integer.parseInt(weights.get(0).toString());
-  		Wid = Integer.parseInt(weights.get(1).toString());
-  		Wop = Integer.parseInt(weights.get(2).toString());
-  		Wnv= Integer.parseInt(weights.get(3).toString());
-  		Wsl = Integer.parseInt(weights.get(4).toString());
+  	if(weights != null){
+  		Wprt = Integer.parseInt(weights.get(0).toString());
+  		Wcrt = Integer.parseInt(weights.get(1).toString());
+  		Wvrt = Integer.parseInt(weights.get(2).toString());
+  		Wpdtp= Integer.parseInt(weights.get(3).toString());
+  		Wcdtp = Integer.parseInt(weights.get(4).toString());
   	}
 	
 
@@ -130,26 +126,26 @@ and open the template in the editor.
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td>Keyword</td>
-					        <td><input type="number" value="<%= Wkw %>"   class="form-control"  id="weightKey" name="weightKey"></td>
+					        <td>Method with a primitive return type</td>
+					        <td><input type="number" value="<%= Wprt %>"   class="form-control"  id="weightPrt" name="weightPrt"></td>
 					      </tr>
 					      <tr>
-					        <td>Identifier</td>
-					        <td><input type="number" value="<%= Wid %>"   class="form-control"  id="weightIdent" name="weightIdent"></td>
+					        <td>Method with a composite return type</td>
+					        <td><input type="number" value="<%= Wcrt %>"   class="form-control"  id="weightCrt" name="weightCrt"></td>
 					      </tr>
 					      <tr>
-					        <td>Operator</td>
-					        <td><input type="number" value="<%= Wop%>" class="form-control" id="weightOp" name="weightOp"></td>
-					      </tr>
-					      
-					      <tr>
-					      	<td>Numerical Value</td>
-					      	<td><input type="number"   value="<%=Wnv %>" class="form-control"  id="weightNume" name="weightNume"></td>
+					        <td>Method with a void return type</td>
+					        <td><input type="number" value="<%= Wvrt%>" class="form-control" id="weightVrt" name="weightVrt"></td>
 					      </tr>
 					      
 					      <tr>
-					      	<td>String Literal</td>
-					      	<td><input type="number"  value="<%=Wsl %>"  class="form-control" id="weightSl" name="weightSl"></td>
+					      	<td>Primitive data type parameter</td>
+					      	<td><input type="number"   value="<%=Wpdtp %>" class="form-control"  id="weightPdtp" name="weightPdtp"></td>
+					      </tr>
+					      
+					      <tr>
+					      	<td>Composite data type parameter</td>
+					      	<td><input type="number"  value="<%=Wcdtp %>"  class="form-control" id="weightCdtp" name="weightCdtp"></td>
 					      </tr>
 					    </tbody>
 					</table>
@@ -159,8 +155,6 @@ and open the template in the editor.
 				</form>
      
     </div>
- 
-  </div>
  
   </div>
 </div>

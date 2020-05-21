@@ -5,20 +5,8 @@ import java.util.ArrayList;
 public class Coupling {
 
 	private String fileName;
-
-	private int Wr = 2;
-	private int Wmcms = 2;
-	private int Wmcmd = 3;
-	private int Wmcrms = 3;
-	private int Wmcrmd = 4;
-	private int Wrmcrms = 4;
-	private int Wrmcrmd = 5;
-	private int Wrmcms = 3;
-	private int Wrmcmd = 4;
-	private int Wmrgvs = 1;
-	private int Wmrgvd = 2;
-	private int Wrmrgvs = 1;
-	private int Wrmrgvd = 2;
+	
+	public static int[] weights = new int[13];
 
 	private Line line;
 	private int[] lineWeight = new int[14];
@@ -52,6 +40,9 @@ public class Coupling {
 	private int[] sum;
 	private int finalValue;
 	
+	private ArrayList<Line> classList;
+	private ArrayList<Line> classObjectList;
+	private ArrayList<Line> classObjectList_DF;
 	private ArrayList<Line> MethodList;
 	private ArrayList<Line> methodSetFull;
 	private ArrayList<Line> calledMethodList;
@@ -60,6 +51,7 @@ public class Coupling {
 	private ArrayList<Line> globalVariableListInReg;
 	private ArrayList<Line> globalVariableListInRec;
 	private ArrayList<Line> regularMethods;
+	private ArrayList<Line> systemMethods;
 	private ArrayList<Line> recursiveMethods;
 	private ArrayList<Line> recursiveMethodCalls;
 	private ArrayList<Line> regularInRegularMethods;
@@ -87,6 +79,45 @@ public class Coupling {
 		this.regularInRegularMethods = null;
 		this.methodSetFull = null;
 		this.sum = new int[13];
+
+		if(!(weights[0] > 0)) {
+			setDefaultWeights();
+		}
+	}
+	
+	public static void setDefaultWeights() {
+		weights[0] = 2;
+		weights[1] = 2;
+		weights[2] = 3;
+		weights[3] = 3;
+		weights[4] = 4;
+		weights[5] = 4;
+		weights[6] = 5;
+		weights[7] = 3;
+		weights[8] = 4;
+		weights[9] = 1;
+		weights[10] = 2;
+		weights[11] = 1;
+		weights[12] = 2;
+				
+	}
+
+	
+	public static void setCustomWeights(int Wr, int Wmcms, int Wmcmd, int Wmcrms, int Wmcrmd, int Wrmcrms, int Wrmcrmd, int Wrmcms, int Wrmcmd, int Wmrgvs, int Wmrgvd, int Wrmrgvs, int Wrmrgvd) {
+		weights[0] = Wr;
+		weights[1] = Wmcms;
+		weights[2] = Wmcmd;
+		weights[3] = Wmcrms;
+		weights[4] = Wmcrmd;
+		weights[5] = Wrmcrms;
+		weights[6] = Wrmcrmd;
+		weights[7] = Wrmcms;
+		weights[8] = Wrmcmd;
+		weights[9] = Wmrgvs;
+		weights[10] = Wmrgvd;
+		weights[11] = Wrmrgvs;
+		weights[12] = Wrmrgvd;
+				
 	}
 
 	public Line getLine() {
@@ -105,108 +136,12 @@ public class Coupling {
 		this.lineWeight = lineWeight;
 	}
 
-	public int getWr() {
-		return Wr;
+	public static int[] getWeights() {
+		return weights;
 	}
 
-	public int getWmcms() {
-		return Wmcms;
-	}
-
-	public int getWmcmd() {
-		return Wmcmd;
-	}
-
-	public int getWmcrms() {
-		return Wmcrms;
-	}
-
-	public int getWmcrmd() {
-		return Wmcrmd;
-	}
-
-	public int getWrmcrms() {
-		return Wrmcrms;
-	}
-
-	public int getWrmcrmd() {
-		return Wrmcrmd;
-	}
-
-	public int getWrmcms() {
-		return Wrmcms;
-	}
-
-	public int getWrmcmd() {
-		return Wrmcmd;
-	}
-
-	public int getWmrgvs() {
-		return Wmrgvs;
-	}
-
-	public int getWmrgvd() {
-		return Wmrgvd;
-	}
-
-	public int getWrmrgvs() {
-		return Wrmrgvs;
-	}
-
-	public int getWrmrgvd() {
-		return Wrmrgvd;
-	}
-
-	public void setWr(int wr) {
-		Wr = wr;
-	}
-
-	public void setWmcms(int wmcms) {
-		Wmcms = wmcms;
-	}
-
-	public void setWmcmd(int wmcmd) {
-		Wmcmd = wmcmd;
-	}
-
-	public void setWmcrms(int wmcrms) {
-		Wmcrms = wmcrms;
-	}
-
-	public void setWmcrmd(int wmcrmd) {
-		Wmcrmd = wmcrmd;
-	}
-
-	public void setWrmcrms(int wrmcrms) {
-		Wrmcrms = wrmcrms;
-	}
-
-	public void setWrmcrmd(int wrmcrmd) {
-		Wrmcrmd = wrmcrmd;
-	}
-
-	public void setWrmcms(int wrmcms) {
-		Wrmcms = wrmcms;
-	}
-
-	public void setWrmcmd(int wrmcmd) {
-		Wrmcmd = wrmcmd;
-	}
-
-	public void setWmrgvs(int wmrgvs) {
-		Wmrgvs = wmrgvs;
-	}
-
-	public void setWmrgvd(int wmrgvd) {
-		Wmrgvd = wmrgvd;
-	}
-
-	public void setWrmrgvs(int wrmrgvs) {
-		Wrmrgvs = wrmrgvs;
-	}
-
-	public void setWrmrgvd(int wrmrgvd) {
-		Wrmrgvd = wrmrgvd;
+	public static void setWeights(int[] weights) {
+		Coupling.weights = weights;
 	}
 
 	public int getNr() {
@@ -425,6 +360,30 @@ public class Coupling {
 		this.fileName = fileName;
 	}
 
+	public ArrayList<Line> getClassList() {
+		return classList;
+	}
+
+	public void setClassList(ArrayList<Line> classList) {
+		this.classList = classList;
+	}
+
+	public ArrayList<Line> getClassObjectList() {
+		return classObjectList;
+	}
+
+	public void setClassObjectList(ArrayList<Line> classObjectList) {
+		this.classObjectList = classObjectList;
+	}
+
+	public ArrayList<Line> getClassObjectList_DF() {
+		return classObjectList_DF;
+	}
+
+	public void setClassObjectList_DF(ArrayList<Line> classObjectList_DF) {
+		this.classObjectList_DF = classObjectList_DF;
+	}
+
 	public void setEndLineNumber(int lineNumber, int number) {
 		this.MethodList.get(lineNumber).setEndLineNumber(number);
 	}
@@ -459,6 +418,14 @@ public class Coupling {
 
 	public void setGlobalVariableListInRec(ArrayList<Line> globalVariableListInRec) {
 		this.globalVariableListInRec = globalVariableListInRec;
+	}
+
+	public ArrayList<Line> getSystemMethods() {
+		return systemMethods;
+	}
+
+	public void setSystemMethods(ArrayList<Line> systemMethods) {
+		this.systemMethods = systemMethods;
 	}
 
 	public void setRegularMethods(ArrayList<Line> regularMethods) {
@@ -623,31 +590,31 @@ public class Coupling {
 	
 	public void setFinalValue() {
 		
-		totr = Wr * Nr;
+		totr = weights[0] * Nr;
 		setTotr(totr);
-		totmcms = Wmcms * Nmcms;
+		totmcms = weights[1] * Nmcms;
 		setTotmcms(totmcms);
-		totmcmd = Wmcmd * Nmcmd;
+		totmcmd = weights[2] * Nmcmd;
 		setTotmcmd(totmcmd);
-		totmcrms = Wmcrms * Nmcrms;
+		totmcrms = weights[3] * Nmcrms;
 		setTotmcrms(totmcrms);
-		totmcrmd = Wmcrmd * Nmcrmd;
+		totmcrmd = weights[4] * Nmcrmd;
 		setTotmcrmd(totmcrmd);
-		totrmcrms = Wrmcrms * Nrmcrms;
+		totrmcrms = weights[5] * Nrmcrms;
 		setTotrmcrms(totrmcrms);
-		totrmcrmd = Wrmcrmd * Nrmcrmd;
+		totrmcrmd = weights[6] * Nrmcrmd;
 		setTotrmcrmd(totrmcrmd);
-		totrmcms = Wrmcms * Nrmcms;
+		totrmcms = weights[7] * Nrmcms;
 		setTotrmcms(totrmcms);
-		totrmcmd = Wrmcmd * Nrmcmd;
+		totrmcmd = weights[8] * Nrmcmd;
 		setTotrmcmd(totrmcmd);
-		totmrgvs = Wmrgvs * Nmrgvs;
+		totmrgvs = weights[9] * Nmrgvs;
 		setTotmrgvs(totmrgvs);
-		totmrgvd = Wmrgvd * Nmrgvd;
+		totmrgvd = weights[10] * Nmrgvd;
 		setTotmrgvd(totmrgvd);
-		totrmrgvs = Wrmrgvs * Nrmrgvs;
+		totrmrgvs = weights[11] * Nrmrgvs;
 		setTotmrgvs(totmrgvs);
-		totrmrgvd = Wrmrgvd * Nrmrgvd;
+		totrmrgvd = weights[12] * Nrmrgvd;
 		setTotrmrgvd(totrmrgvd);
 		
 		finalValue = totr + totmcms + totmcmd + totmcrms + totmcrmd + totrmcrms + totrmcrmd

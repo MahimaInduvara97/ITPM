@@ -15,7 +15,7 @@ public class Main {
 	private ArrayList<CustomFile> fileList = new ArrayList<CustomFile>();
 	private String fileType = "";
 	public static String WEBCONTENTDIR = "C:\\Users\\Administrator\\Desktop\\git\\repository\\ITPM WEB\\WebContent\\";
-	//public static String WEBCONTENTDIR = "/opt/tomcat/webapps/ROOT/";
+	//Folder path inside the server( public static String WEBCONTENTDIR = "/opt/tomcat/webapps/ROOT/"; )
 
 	public ArrayList<CustomFile> getFileList() {
 		return fileList;
@@ -35,7 +35,7 @@ public class Main {
 
 	public boolean run() {
 
-		CouplingService couplingService = new CouplingServiceImp();
+		CouplingService couplingService = new CouplingServiceImp(fileList);
 
 		for (CustomFile file : this.fileList) {
 
@@ -55,8 +55,6 @@ public class Main {
 					fileReadService.openFile(fileRead, file);
 					fileReadService.readFile(fileRead, file);
 					fileReadService.closeFile(fileRead);
-
-					couplingService.process1(file);
 					status = true;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,14 +64,16 @@ public class Main {
 		}
 		if (this.fileList.size() > 1) {
 			try {
-				couplingService.process2(this.fileList);
+				couplingService.process2();
 				status = true;
 			} catch (Exception e) {
 				status = false;
 				e.printStackTrace();
 			}
+		}else {
+			couplingService.process1(fileList.get(0));
 		}
-		couplingService.process3(this.fileList);
+		CouplingServiceImp.process3();
 		return status;
 	}
 

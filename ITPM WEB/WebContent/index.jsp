@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <<head>
+ <head>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -48,12 +48,11 @@
 		<ul id="menu">
 			<li class="current_page_item"><a href="#"><span>Home</span></a></li>
 			<li><a href="size.jsp"><span>Size</span></a></li>
-            <li><a href="specialfishes.html"><span>Variable</span></a></li>
-			<li><a href="#"><span>Methods</span></a></li>
-			<li><a href="#"><span>Inheritance</span></a></li>
+            <li><a href="variable.jsp"><span>Variable</span></a></li>
+			<li><a href="Methods.jsp"><span>Methods</span></a></li>
+			<li><a href="Upload.jsp"><span>Inheritance</span></a></li>
 			<li><a href="cupling.jsp"><span>Coupling</span></a></li>
-			<li><a href="cupling.jsp"><span>Control Structures</span></a></li>
-			<li><a href="about.jsp"><span>About</span></a></li>
+			<li><a href="controlStruture.jsp"><span>Control Structures</span></a></li>
 		</ul>
 		
 	</div>
@@ -61,21 +60,36 @@
 	<div id="page">
 		<div id="content" Style="">
                     
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Result Of Measurement</div>
-                     
+                   <div class="panel panel-primary">
+                        <div class="panel-heading">All Result Of Measurement</div>
                         <div class="panel-body">
+                          <br>
+                            <%Integer SumNkw = (Integer)request.getAttribute("SumNkw"); %>
+                            <%Integer SumNid = (Integer)request.getAttribute("SumNid"); %>
+                            <%Integer SumNop = (Integer)request.getAttribute("SumNop"); %>
+                            <%Integer SumNnv = (Integer)request.getAttribute("SumNnv"); %>
+                            <%Integer SumNsl = (Integer)request.getAttribute("SumNsl"); %>
+                            <% if (SumNkw == null) { %>
+							<div> <label style="center" for="male"><u>Size </u></label><br>
+							<input type="text" class="res" name="result" value="" style="width: 320px;" readonly="readonly" /><br></div>
+							<div> <label style="center" for="male"><u>Method </u></label><br>
+							 <input type="text" class="res" name="result" value="" style="width: 320px;" readonly="readonly" /><br></div>
+							<div>  <label style="center" for="male"><u>Variable </u></label><br>
+							<input type="text" class="res" name="result" value="" style="width: 320px;" readonly="readonly" /><br></div>
+							<div>  <label style="center" for="male"><u>Control Structure </u></label><br>
+							<input type="text" class="res" name="result" value="" style="width: 320px;" readonly="readonly" /><br></div>
+							<div>  <label style="center" for="male"><u>Inheritance </u></label><br>
+							<input type="text" class="res" name="result" value="" style="width: 320px;" readonly="readonly" /><br></div>
+							<div>  <label style="center" for="male"><u>Coupling </u></label><br>
+							<input type="text" class="res" name="result" value="" style="width: 320px;" readonly="readonly" /><br></div>
+							<% } else { %>
+							<div><input type="text" class="res" name="result" value="Nkw=<%= SumNkw%>  |  Nid=<%= SumNid%>  |  Nop=<%= SumNop%>  |  Nnv=<%= SumNnv%>  |  Nsl=<%= SumNsl%>" style="width: 320px;" readonly="readonly" /><br></div>
+							<% } %>
                                 <!-- <input type="text" class="res" name="result" value="" size="20px" readonly="readonly" /><br> -->
-                                    <button class="btn btn-lg btn-default btn-res" onclick="toFileUpload();">FileUpload</button><br>
-                         	<br>
-		<br>
-		<br>	
-		<br>
-		<br>
-		<br>
-			<br>
-		<br>
-		<br>
+                                <div style="align:center;">
+                                 <button  class="btn btn-lg btn-default btn-res" onclick="toFileUpload();">View Reslut</button><br></div>
+                                   
+                         
                         </div>
                                  </div>
 			</div>
