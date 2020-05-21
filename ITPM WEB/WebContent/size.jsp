@@ -34,10 +34,10 @@ and open the template in the editor.
                 <br>
                 <ul>
                     <li><a href=index.jsp>Home</a></li>
-                    <li><a href="variable">Variables</a></li>
+                    <li><a href="variable.jsp">Variables</a></li>
                     <li><a href="Methods.jsp">Methods</a></li>
                     <li><a href="inheritance.jsp">Inheritance</a></li>
-                    <li><a href="#cupling.jsp">Coupling</a></li>
+                    <li><a href="cupling.jsp">Coupling</a></li>
                      <li><a href="controlStruture.jsp">Control Structure</a></li>
                 </ul>
                 <hr>
